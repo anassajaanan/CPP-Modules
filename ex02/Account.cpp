@@ -34,7 +34,6 @@ int	Account::getNbWithdrawals()
 
 void	Account::_displayTimestamp()
 {
-
 	std::time_t now = time(0);
 
 	char	timestamp[20];
