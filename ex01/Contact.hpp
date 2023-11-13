@@ -12,6 +12,7 @@ class Contact
 		std::string phoneNumber;
 		std::string	darkestSecret;
 	public:
+		// Constructors
 		Contact();
 		Contact(std::string fName, std::string lName, std::string nName, std::string pNumber, std::string dSecret);
 

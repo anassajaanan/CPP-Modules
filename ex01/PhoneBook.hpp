@@ -14,14 +14,20 @@ class PhoneBook
 		Contact	contacts[8];
 		int	numOfContacts;
 	public:
+		// Constructors
 		PhoneBook();
-		int		getNumOfContacts();
-		void	addNewContact(Contact contact);
 
+		// Accessors
+		int		getNumOfContacts();
+
+		// facilitators
 		Contact	createContact();
+		void	addNewContact(Contact &contact);
+
 		void	printTableHeader();
 		void	printContact(int index);
 		void 	printTableFooter();
+		void	printContactTable();
 
 		void	printContactDetails(int selectedIndex);
 

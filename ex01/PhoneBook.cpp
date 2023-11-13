@@ -11,7 +11,7 @@ int	PhoneBook::getNumOfContacts()
 	return (numOfContacts);
 }
 
-void	PhoneBook::addNewContact(Contact contact)
+void	PhoneBook::addNewContact(Contact &contact)
 {
 	if (numOfContacts < 8)
 	{
@@ -78,7 +78,7 @@ void	PhoneBook::printTableHeader()
 
 void	PhoneBook::printContact(int index)
 {
-	Contact	contact = contacts[index];
+	Contact	&contact = contacts[index];
 	std::string	infos[4] = {std::to_string(index), contact.getFirstName(), contact.getLastName(), contact.getNickName()};
 	for (int j = 0; j < 4; j++)
 	{
@@ -102,9 +102,20 @@ void	PhoneBook::printTableFooter()
 	std::cout << std::endl;
 }
 
+void	PhoneBook::printContactTable()
+{
+	printTableHeader();
+	for (int i = 0; i < numOfContacts; i++)
+	{
+		printContact(i);
+	}
+	printTableFooter();
+	std::cout << std::endl;
+}
+
 void	PhoneBook::printContactDetails(int selectedIndex)
 {
-	Contact selectedContact = contacts[selectedIndex];
+	Contact &selectedContact = contacts[selectedIndex];
 
 	std::cout << std::endl;
 	std::cout << "- First Name     : " << selectedContact.getFirstName() << std::endl;
