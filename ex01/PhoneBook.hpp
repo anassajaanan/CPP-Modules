@@ -1,5 +1,7 @@
-#ifndef PHONE_BOOK_HPP
-# define PHONE_BOOK_HPP
+
+#pragma once
+#ifndef __PHONE_BOOK_H__
+# define __PHONE_BOOK_H__
 
 # include <iostream>
 # include <string>
@@ -33,4 +35,4 @@ class PhoneBook
 
 };
 
-#endif
+#endif /* __PHONE_BOOK_H__ */

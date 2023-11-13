@@ -1,5 +1,7 @@
-#ifndef CONTACT_HPP
-# define CONTACT_HPP
+
+#pragma once
+#ifndef __CONTACT_H__
+#define __CONTACT_H__
 
 #include <string>
 
@@ -36,4 +38,4 @@ class Contact
 
 
 
-#endif
+#endif /* __CONTACT_H__ */
