@@ -12,7 +12,7 @@ int main(void)
 	for (int i = 0; i < numOfZombies; i++)
 		zombies[i].announce();
 
-	delete [] zombies;
+	delete[] zombies;
 
 	return (0);
 }
