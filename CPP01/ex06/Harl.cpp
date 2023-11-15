@@ -1,5 +1,6 @@
 #include "Harl.hpp"
 
+
 void	Harl::debug (void)
 {
 	std::cout << "(DEBUG) I love having extra bacon for my 7XL-double-cheese-triple-pickle-specialketchup burger. I really do!" << std::endl;
@@ -22,14 +23,22 @@ void	Harl::error (void)
 
 void	Harl::complain(std::string level)
 {
-	void (Harl::*functions[4])(void) = {&Harl::debug, &Harl::infos, &Harl::warning, &Harl::error};
+	int	levelNumber = getLevelNumber(level);
 
-	int levelNumber = getLevelNumber(level);
-
-	if (levelNumber < 4)
-		(this->*functions[levelNumber])();
-	else
-	 	std::cout << "Unknown complaint level: " << level << std::endl;
+	switch (levelNumber)
+	{
+		case 0:
+			debug();
+		case 1:
+			infos();
+		case 2:
+			warning();
+		case 3:
+			error();
+			break;
+		default:
+			std::cout << "Invalid log level" << std::endl;
+	}
 }
 
 int	getLevelNumber(std::string level)
