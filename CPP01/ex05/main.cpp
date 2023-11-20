@@ -12,7 +12,8 @@ int main(void)
 	harl.complain("INFO");
 	harl.complain("WARNING");
 	harl.complain("ERROR");
-	harl.complain("ANAS");
+	
+	harl.complain("UNKNOWN");
 
 
 	return (0);

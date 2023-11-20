@@ -12,6 +12,9 @@ void	HumanB::setWeapon(Weapon& _weapon)
 
 void	HumanB::attack()
 {
-	std::cout << name << " attacks with their " << (*weapon).getType() << std::endl;
+	if (weapon == NULL)
+		std::cout << name << " attacks with their bare hands" << std::endl;
+	else
+		std::cout << name << " attacks with their " << (*weapon).getType() << std::endl;
 }
 

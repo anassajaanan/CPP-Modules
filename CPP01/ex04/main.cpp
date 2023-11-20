@@ -1,10 +1,27 @@
 #include <iostream>
 #include <fstream>
+#include <sys/stat.h>
 #include <string>
 
+bool	isFile(std::string& fileName)
+{
+	struct stat s;
+
+	if (stat(fileName.c_str(), &s) == 0)
+	{
+		if (s.st_mode & S_IFREG)
+			return (true);
+	}
+	return (false);
+}
 
 bool	openFile(std::ifstream& ifs, std::string& fileName)
 {
+	if (isFile(fileName) == false)
+	{
+		std::cout << "File does not exist" << std::endl;
+		return (false);
+	}
 	ifs.open(fileName);
 	if (!ifs.is_open())
 	{
@@ -50,17 +67,13 @@ void	replaceAndWriteToFile(std::string& fileName, std::string& toFind, std::stri
 		else
 		{
 			index = buffer.find(toFind, i);
-			for (int j = i; j < index; j++)
-				ofs << buffer[j];
-			ofs << toReplace;
+			ofs << buffer.substr(i, index - i) << toReplace;
 			i = index + toFind.length();
 		}
 	}
-	while (i < (int)buffer.length())
-	{
-		ofs << buffer[i];
-		i++;
-	}
+	if (i < (int)buffer.length())
+		ofs << buffer.substr(i, buffer.length() - i);
+
 	ofs.close();
 }
 
@@ -77,6 +90,12 @@ int main(int argc, char **argv)
 	std::string filename = argv[1];
 	std::string toFind = argv[2];
 	std::string toReplace = argv[3];
+
+	if (toFind.empty())
+	{
+		std::cout << "Error: Empty string" << std::endl;
+		return (1);
+	}
 
 	if (openFile(ifs, filename) == false)
 		return (2);

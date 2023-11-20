@@ -4,7 +4,7 @@
 
 int main()
 {
-	std::string	stringVar = "42 is Awesome";
+	std::string	stringVar = "HI THIS IS BRAIN";
 
 	std::string	*stringPTR = &stringVar;
 	std::string& stringREF = stringVar;
