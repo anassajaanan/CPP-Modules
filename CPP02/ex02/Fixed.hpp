@@ -1,7 +1,6 @@
 
 
 #pragma once
-#include <ostream>
 #ifndef FIXED_HPP
 # define FIXED_HPP
 
