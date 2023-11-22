@@ -12,6 +12,20 @@ ScavTrap::ScavTrap(const std::string &name, unsigned int hitPoint, unsigned int 
 	std::cout << "ScavTrap " << this->name << " is created" << std::endl;
 }
 
+ScavTrap::ScavTrap(const ScavTrap &scavTrap) : ClapTrap(scavTrap)
+{
+	std::cout << "ScavTrap " << name << " is created" << std::endl;
+}
+
+ScavTrap	&ScavTrap::operator=(const ScavTrap &scavTrap)
+{
+	this->name = scavTrap.name;
+	this->hitPoint = scavTrap.hitPoint;
+	this->energyPoint = scavTrap.energyPoint;
+	this->attackDamage = scavTrap.attackDamage;
+	return (*this);
+}
+
 ScavTrap::~ScavTrap()
 {
 	std::cout << "ScavTrap " << name << " is destroyed" << std::endl;

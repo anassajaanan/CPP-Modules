@@ -12,6 +12,20 @@ FragTrap::FragTrap(const std::string &name, unsigned int hitPoint, unsigned int 
 	std::cout << "FragTrap " << name << " is created" << std::endl;
 }
 
+FragTrap::FragTrap(const FragTrap &fragTrap) : ClapTrap(fragTrap)
+{
+	std::cout << "FragTrap " << name << " is created" << std::endl;
+}
+
+FragTrap	&FragTrap::operator=(const FragTrap &fragTrap)
+{
+	this->name = fragTrap.name;
+	this->hitPoint = fragTrap.hitPoint;
+	this->energyPoint = fragTrap.energyPoint;
+	this->attackDamage = fragTrap.attackDamage;
+	return (*this);
+}
+
 FragTrap::~FragTrap()
 {
 	std::cout << "FragTrap " << name << " is destroyed" << std::endl;

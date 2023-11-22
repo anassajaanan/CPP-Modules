@@ -1,9 +1,6 @@
 #include "ClapTrap.hpp"
 #include <string>
 
-
-
-
 ClapTrap::ClapTrap() : name("Default"), hitPoint(10), energyPoint(10), attackDamage(0)
 {
 	std::cout << "Default ClapTrap is created" << std::endl;
@@ -13,6 +10,21 @@ ClapTrap::ClapTrap(const std::string &name, unsigned int hitPoint, unsigned int 
 	: name(name), hitPoint(hitPoint), energyPoint(energyPoint), attackDamage(attackDamage)
 {
 	std::cout << "ClapTrap " << name << " is created" << std::endl;
+}
+
+ClapTrap::ClapTrap(const ClapTrap &clapTrap)
+{
+	*this = clapTrap;
+	std::cout << "ClapTrap " << name << " is created" << std::endl;
+}
+
+ClapTrap	&ClapTrap::operator=(const ClapTrap &clapTrap)
+{
+	this->name = clapTrap.name;
+	this->hitPoint = clapTrap.hitPoint;
+	this->energyPoint = clapTrap.energyPoint;
+	this->attackDamage = clapTrap.attackDamage;
+	return (*this);
 }
 
 ClapTrap::~ClapTrap()

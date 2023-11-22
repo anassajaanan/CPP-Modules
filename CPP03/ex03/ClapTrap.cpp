@@ -11,6 +11,21 @@ ClapTrap::ClapTrap(const std::string &name, unsigned int hitPoint, unsigned int 
 	std::cout << "ClapTrap " << name << " is created" << std::endl;
 }
 
+ClapTrap::ClapTrap(const ClapTrap &clapTrap)
+{
+	*this = clapTrap;
+	std::cout << "ClapTrap " << name << " is created" << std::endl;
+}
+
+ClapTrap	&ClapTrap::operator=(const ClapTrap &clapTrap)
+{
+	this->name = clapTrap.name;
+	this->hitPoint = clapTrap.hitPoint;
+	this->energyPoint = clapTrap.energyPoint;
+	this->attackDamage = clapTrap.attackDamage;
+	return (*this);
+}
+
 ClapTrap::~ClapTrap()
 {
 	std::cout << "ClapTrap " << name << " is destroyed" << std::endl;
