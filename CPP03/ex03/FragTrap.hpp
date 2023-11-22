@@ -16,8 +16,6 @@ public:
 	~FragTrap();
 
 	void highFivesGuys(void);
-
-
 };
 
 

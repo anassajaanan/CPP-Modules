@@ -1,8 +1,5 @@
 #include "ClapTrap.hpp"
 
-
-
-
 ClapTrap::ClapTrap() : name("Default"), hitPoint(100), energyPoint(50), attackDamage(20)
 {
 	std::cout << "Default ClapTrap is created" << std::endl;
@@ -60,44 +57,4 @@ void	ClapTrap::beRepaired(unsigned int amount)
 void	ClapTrap::displayStats() const
 {
 	std::cout << "ClapTrap " << name << " has " << hitPoint << " hit points, " << energyPoint << " energy points and " << attackDamage << " attack damage" << std::endl;
-}
-
-void	ClapTrap::setName(std::string _name)
-{
-	name = _name;
-}
-
-void	ClapTrap::setHitPoint(unsigned int _hitPoint)
-{
-	hitPoint = _hitPoint;
-}
-
-void	ClapTrap::setEnergyPoint(unsigned int _energyPoint)
-{
-	energyPoint = _energyPoint;
-}
-
-void	ClapTrap::setAttackDamage(unsigned int _attackDamage)
-{
-	attackDamage = _attackDamage;
-}
-
-std::string	ClapTrap::getName() const
-{
-	return (name);
-}
-
-unsigned int	ClapTrap::getHitPoint() const
-{
-	return (hitPoint);
-}
-
-unsigned int	ClapTrap::getEnergyPoint() const
-{
-	return (energyPoint);
-}
-
-unsigned int	ClapTrap::getAttackDamage() const
-{
-	return (attackDamage);
 }

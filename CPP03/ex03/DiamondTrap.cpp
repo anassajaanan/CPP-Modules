@@ -16,12 +16,12 @@ DiamondTrap::DiamondTrap(std::string _name) : ClapTrap(_name + "_clap_name"), Fr
 
 DiamondTrap::~DiamondTrap()
 {
-	std::cout << "DiamondTrap " << this->name << " is destroyed" << std::endl;
+	std::cout << "DiamondTrap " << name << " is destroyed" << std::endl;
 }
 
 void	DiamondTrap::whoAmI()
 {
-	std::cout << "DiamondTrap name is " << name << " and ClapTrap name is " << this->ClapTrap::getName() << std::endl;
+	std::cout << "DiamondTrap name is " << name << " and ClapTrap name is " << ClapTrap::name << std::endl;
 }
 
 void	DiamondTrap::attack(std::string const & target)
@@ -31,6 +31,6 @@ void	DiamondTrap::attack(std::string const & target)
 
 void	DiamondTrap::displayStats() const
 {
-	std::cout	<< "DiamondTrap name is " << name << ", hit points is " << this->getHitPoint() << ", energy points is "
-				<< this->getEnergyPoint() << ", attack damage is " << this->getAttackDamage() << std::endl;
+	std::cout	<< "DiamondTrap name is " << name << ", hit points is " << hitPoint << ", energy points is "
+				<< energyPoint << ", attack damage is " << attackDamage << std::endl;
 }
