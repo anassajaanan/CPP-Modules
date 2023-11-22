@@ -14,24 +14,24 @@ ScavTrap::ScavTrap(const std::string &name, unsigned int hitPoint, unsigned int 
 
 ScavTrap::~ScavTrap()
 {
-	std::cout << "ScavTrap " << this->getName() << " is destroyed" << std::endl;
+	std::cout << "ScavTrap " << name << " is destroyed" << std::endl;
 }
 
 // Override the attack function of ClapTrap
 void	ScavTrap::attack(const std::string &target)
 {
-	if (this->getEnergyPoint() > 0)
+	if (energyPoint > 0)
 	{
-		std::cout << "ScavTrap " << this->getName() << " attacks " << target << ", causing " << this->getAttackDamage() << " points of damage!" << std::endl;
-		this->setEnergyPoint(this->getEnergyPoint() - 1);
+		std::cout << "ScavTrap " << name << " attacks " << target << ", causing " << attackDamage << " points of damage!" << std::endl;
+		energyPoint--;
 	}
 	else
 	{
-		std::cout << "ScavTrap " << this->getName() << " is out of energy!" << std::endl;
+		std::cout << "ScavTrap " << name << " is out of energy!" << std::endl;
 	}
 }
 
 void	ScavTrap::guardGate()
 {
-	std::cout << "ScavTrap " << this->getName() << " have enterred in Gate keeper mode" << std::endl;
+	std::cout << "ScavTrap " << name << " have enterred in Gate keeper mode" << std::endl;
 }

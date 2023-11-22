@@ -14,10 +14,10 @@ FragTrap::FragTrap(const std::string &name, unsigned int hitPoint, unsigned int 
 
 FragTrap::~FragTrap()
 {
-	std::cout << "FragTrap " << this->getName() << " is destroyed" << std::endl;
+	std::cout << "FragTrap " << name << " is destroyed" << std::endl;
 }
 
 void	FragTrap::highFivesGuys()
 {
-	std::cout << "FragTrap " << this->getName() << " is asking for high fives" << std::endl;
+	std::cout << "FragTrap " << name << " is asking for high fives" << std::endl;
 }
