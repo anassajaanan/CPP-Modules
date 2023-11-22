@@ -9,7 +9,7 @@
 
 class ClapTrap
 {
-private:
+protected:
 	std::string		name;
 	unsigned int	hitPoint;
 	unsigned int	energyPoint;
@@ -25,19 +25,6 @@ public:
 	void	attack(const std::string &target);
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
-
-
-	// Mutators
-	void		setName(std::string _name);
-	void		setHitPoint(unsigned int _hitPoint);
-	void		setEnergyPoint(unsigned int _energyPoint);
-	void		setAttackDamage(unsigned int _attackDamage);
-
-	// Accessors
-	std::string		getName() const;
-	unsigned int	getHitPoint() const;
-	unsigned int	getEnergyPoint() const;
-	unsigned int	getAttackDamage() const;
 
 
 	void	displayStats() const;

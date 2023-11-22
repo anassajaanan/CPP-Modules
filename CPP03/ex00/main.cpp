@@ -3,23 +3,16 @@
 
 int main()
 {
-    // Create a default ClapTrap
-    ClapTrap defaultClapTrap;
+    ClapTrap clapTrap("Anas", 20, 15, 5);
 
-    // Create a custom ClapTrap
-    ClapTrap customClapTrap("Custom", 20, 15, 5);
+    clapTrap.attack("Enemy");
 
-    defaultClapTrap.attack("Target1");
-    customClapTrap.attack("Target2");
+    clapTrap.takeDamage(10);
 
-    defaultClapTrap.takeDamage(3);
-    customClapTrap.takeDamage(7);
-
-    defaultClapTrap.beRepaired(2);
-    customClapTrap.beRepaired(4);
+    clapTrap.beRepaired(5);
 
 
-	customClapTrap.displayStats();
+	clapTrap.displayStats();
 
     return 0;
 }
