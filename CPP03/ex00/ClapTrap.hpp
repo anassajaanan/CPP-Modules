@@ -19,8 +19,6 @@ private:
 public:
 	ClapTrap();
 	ClapTrap(const std::string &name, unsigned int hitPoint = 10, unsigned int energyPoint = 10, unsigned int attackDamage = 0);
-	ClapTrap(const ClapTrap &other);
-	ClapTrap &operator=(const ClapTrap &other);
 	~ClapTrap();
 
 

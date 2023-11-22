@@ -12,18 +12,6 @@ ScavTrap::ScavTrap(const std::string &name, unsigned int hitPoint, unsigned int 
 	std::cout << "ScavTrap " << name << " is created" << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other)
-{
-	std::cout << "ScavTrap " << this->getName() << " is created from a copy" << std::endl;
-}
-
-ScavTrap	&ScavTrap::operator=(const ScavTrap &other)
-{
-	ClapTrap::operator=(other);
-	std::cout << "ScavTrap " << this->getName() << " is assigned from another ScavTrap" << std::endl;
-	return (*this);
-}
-
 ScavTrap::~ScavTrap()
 {
 	std::cout << "ScavTrap " << this->getName() << " is destroyed" << std::endl;

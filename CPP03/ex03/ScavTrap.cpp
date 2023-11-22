@@ -9,7 +9,8 @@ ScavTrap::ScavTrap()
 ScavTrap::ScavTrap(const std::string &name, unsigned int hitPoint, unsigned int energyPoint, unsigned int attackDamage)
 	: ClapTrap(name, hitPoint, energyPoint, attackDamage)
 {
-	std::cout << "ScavTrap " << name << " is created" << std::endl;
+	std::cout << "ScavTrap " << this->getName() << " is created" << std::endl;
+	ClapTrap::setEnergyPoint(energyPoint);
 }
 
 ScavTrap::~ScavTrap()

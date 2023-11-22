@@ -14,22 +14,6 @@ ClapTrap::ClapTrap(const std::string &name, unsigned int hitPoint, unsigned int 
 	std::cout << "ClapTrap " << name << " is created" << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap &other)
-{
-	std::cout << "ClapTrap " << other.name << " is created from a copy" << std::endl;
-	*this = other;
-}
-
-ClapTrap	&ClapTrap::operator=(const ClapTrap &other)
-{
-	std::cout << "ClapTrap " << name << " is assigned from another ClapTrap" << std::endl;
-	this->name = other.name;
-	this->hitPoint = other.hitPoint;
-	this->energyPoint = other.energyPoint;
-	this->attackDamage = other.attackDamage;
-	return (*this);
-}
-
 ClapTrap::~ClapTrap()
 {
 	std::cout << "ClapTrap " << name << " is destroyed" << std::endl;
