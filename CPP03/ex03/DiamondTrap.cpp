@@ -22,6 +22,7 @@ DiamondTrap::DiamondTrap(const DiamondTrap &copy) : ClapTrap(copy), FragTrap(cop
 
 DiamondTrap	&DiamondTrap::operator=(const DiamondTrap &copy)
 {
+	ClapTrap::operator=(copy);
 	this->name = copy.name;
 	this->hitPoint = copy.hitPoint;
 	this->energyPoint = copy.energyPoint;

@@ -10,10 +10,8 @@ int main()
     fragTrap.takeDamage(20);
     fragTrap.beRepaired(10);
 
-    // Display stats after actions
     fragTrap.displayStats();
 
-    // Test unique function for FragTrap
     fragTrap.highFivesGuys();
 
     return 0;
