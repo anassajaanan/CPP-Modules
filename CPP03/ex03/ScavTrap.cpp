@@ -10,7 +10,6 @@ ScavTrap::ScavTrap(const std::string &name, unsigned int hitPoint, unsigned int 
 	: ClapTrap(name, hitPoint, energyPoint, attackDamage)
 {
 	std::cout << "ScavTrap " << this->name << " is created" << std::endl;
-	// ClapTrap::energyPoint = energyPoint;
 	this->energyPoint = energyPoint;
 }
 
