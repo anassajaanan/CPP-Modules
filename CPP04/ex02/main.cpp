@@ -15,5 +15,8 @@ int main()
 		ptrs[i] = new Cat();
 
 	for (int i = 0; i < numAnimals; i++)
+		ptrs[i]->makeSound();
+
+	for (int i = 0; i < numAnimals; i++)
 		delete ptrs[numAnimals - 1 - i];
 }
