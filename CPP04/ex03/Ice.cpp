@@ -10,10 +10,7 @@ Ice::Ice()
 
 Ice::Ice(const std::string &type) : AMateria(type) { }
 
-Ice::Ice(const Ice &other)
-{
-	type = other.type;
-}
+Ice::Ice(const Ice &other) : AMateria(other) { }
 
 Ice	&Ice::operator=(const Ice &other)
 {

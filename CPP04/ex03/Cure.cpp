@@ -9,10 +9,7 @@ Cure::Cure()
 
 Cure::Cure(const std::string &type) : AMateria(type) { }
 
-Cure::Cure(const Cure &other)
-{
-	type = other.type;
-}
+Cure::Cure(const Cure &other) : AMateria(other) { }
 
 Cure	&Cure::operator=(const Cure &other)
 {
