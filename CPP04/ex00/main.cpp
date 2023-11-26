@@ -31,6 +31,9 @@ int main()
 	meta2->makeSound(); // Output: Generic WrongAnimal sound 🐾
 	i2->makeSound(); // Output: Generic WrongAnimal sound 🐾
 
+	delete i2;
+	delete meta2;
+
 	delete i;
 	delete j;
 	delete meta;
