@@ -53,7 +53,7 @@ void	*Queue::queueFront()
 	return (front->val);
 }
 
-int		Queue::queueIsEmpty()
+int		Queue::isEmpty()
 {
 	if (front == NULL)
 		return (1);

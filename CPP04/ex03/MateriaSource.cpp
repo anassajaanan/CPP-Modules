@@ -62,8 +62,7 @@ void	MateriaSource::learnMateria(AMateria *m)
 	{
 		if (learnedMaterias[i] == NULL)
 		{
-			// learnedMaterias[i] = m->clone();
-			learnedMaterias[i] = m;
+			learnedMaterias[i] = m->clone();
 			numLearnedMaterias++;
 			break;
 		}

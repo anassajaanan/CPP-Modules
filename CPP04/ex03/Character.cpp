@@ -2,18 +2,18 @@
 #include "AMateria.hpp"
 #include "ICharacter.hpp"
 
-Character::Character()
+Character::Character() : name(""), queue()
 {
 	for (int i = 0; i < 4; i++)
-	{
 		inventory[i] = NULL;
-	}
 }
 
-Character::Character(const std::string &name) : name(name)
+
+Character::Character(const std::string &name) : name(name), queue()
 {
 	for (int i = 0; i < 4; i++)
 		inventory[i] = NULL;
+
 }
 
 Character::Character(const Character &other)
@@ -62,9 +62,9 @@ Character::~Character()
 			delete  inventory[i];
 		}
 	}
-	while (!queue.queueIsEmpty())
+	while (!queue.isEmpty())
 	{
-		AMateria *val = (AMateria *)queue.dequeue();
+		AMateria	*val = (AMateria *)queue.dequeue();
 		delete val;
 	}
 }
@@ -80,7 +80,7 @@ void	Character::equip(AMateria *m)
 	{
 		if (inventory[i] == NULL)
 		{
-			inventory[i] = m;
+			inventory[i] = m->clone();
 			return ;
 		}
 	}

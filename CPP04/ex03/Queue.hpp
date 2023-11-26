@@ -29,7 +29,7 @@ public:
 	void	enqueue(void *val);
 	void	*dequeue(void);
 	void	*queueFront();
-	int		queueIsEmpty();
+	int		isEmpty();
 
 };
 
