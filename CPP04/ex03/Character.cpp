@@ -85,6 +85,7 @@ void	Character::unequip(int idx)
 {
 	if (idx < 0 || idx > 3)
 		return ;
+	
 	inventory[idx] = NULL;
 }
 
