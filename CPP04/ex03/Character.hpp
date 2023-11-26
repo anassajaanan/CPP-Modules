@@ -6,12 +6,14 @@
 
 #include "AMateria.hpp"
 #include "ICharacter.hpp"
+#include "Queue.hpp"
 
 class Character : public ICharacter
 {
 private:
 	std::string	name;
 	AMateria	*inventory[4];
+	Queue		queue;
 
 public:
 	Character();
