@@ -1,15 +1,25 @@
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 #include <ostream>
 
 const char	*FormGradeTooHighException::what() const throw()
 {
-	return ("AForm::GradeTooHighException");
+	return ("Form::GradeTooHighException");
 }
 
 const char	*FormGradeTooLowException::what() const throw()
 {
-	return ("AForm::GradeTooLowException");
+	return ("Form::GradeTooLowException");
+}
+
+const char	*FormNotSignedException::what() const throw()
+{
+	return ("Form::FormNotSignedException");
+}
+
+const char	*FormFileException::what() const throw()
+{
+	return ("Form::FormFileException: File could not be opened.");
 }
 
 AForm::AForm()
@@ -65,9 +75,9 @@ void	AForm::beSigned(const Bureaucrat &other)
 
 std::ostream	&operator<<(std::ostream &os, const AForm &other)
 {
-	os	<< "AFormName: " << other.getName()
-		<< ", AFormIsSigned: " << other.isFormSigned()
-		<< ", AFormSignGrade: " << other.getSignGrade()
-		<< ", AFormExecuteGrade: " << other.getExecuteGrade() << std::endl;
+	os	<< "FormName: " << other.getName()
+		<< ", FormIsSigned: " << other.isFormSigned()
+		<< ", FormSignGrade: " << other.getSignGrade()
+		<< ", FormExecuteGrade: " << other.getExecuteGrade() << std::endl;
 	return (os);
 }

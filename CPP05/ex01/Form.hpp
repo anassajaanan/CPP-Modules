@@ -1,8 +1,8 @@
 
 
 #pragma once
-#ifndef AForm_HPP
-# define AForm_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 #include <iostream>
 #include <string>
@@ -52,4 +52,4 @@ std::ostream	&operator<<(std::ostream &os, const AForm &other);
 
 
 
-#endif /* AForm_HPP */
+#endif /* AFORM_HPP */

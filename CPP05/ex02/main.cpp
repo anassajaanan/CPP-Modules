@@ -20,7 +20,7 @@ int main(void)
 		bureaucrat.signAForm(shrubbery);
 		bureaucrat.executeAForm(shrubbery);
 
-		// #=========== RobotmyRequestForm =======#
+		// #=========== RobotomyRequestForm =======#
 		RobotomyRequestForm	robotomy("Robot");
 		std::cout << robotomy;
 
@@ -40,5 +40,5 @@ int main(void)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	return (0)
+	return (0);
 }
