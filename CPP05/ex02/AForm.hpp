@@ -21,6 +21,18 @@ public:
 	const char	*what() const throw();
 };
 
+class FormNotSignedException : public std::exception
+{
+public:
+	const char	*what() const throw();
+};
+
+class FormFileException : public std::exception
+{
+public:
+	const char	*what() const throw();
+};
+
 
 class AForm
 {
@@ -35,7 +47,7 @@ public:
 	AForm(std::string name, int signGrade, int executeGrade);
 	AForm(const AForm &other);
 	AForm	&operator=(const AForm &other);
-	~AForm();
+	virtual ~AForm();
 
 	void	beSigned(const Bureaucrat &other);
 
@@ -43,6 +55,9 @@ public:
 	bool		isFormSigned() const;
 	int			getSignGrade() const;
 	int			getExecuteGrade() const;
+
+	virtual void	execute(const Bureaucrat &executor) const = 0;
+
 
 };
 

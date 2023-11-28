@@ -1,5 +1,5 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 #include <exception>
 
 
@@ -13,16 +13,16 @@ int main(void)
 		bureaucrat.incrementGrade();
 		std::cout << bureaucrat;
 
-		Form form("form", 42, 42);
-		std::cout << form;
+		AForm AForm("AForm", 42, 42);
+		std::cout << AForm;
 
-		bureaucrat.signForm(form);
+		bureaucrat.signAForm(AForm);
 		
 		bureaucrat.incrementGrade();
 		std::cout << bureaucrat;
 
-		bureaucrat.signForm(form);
-		std::cout << form;
+		bureaucrat.signAForm(AForm);
+		std::cout << AForm;
 	}
 	catch(std::exception &e)
 	{
