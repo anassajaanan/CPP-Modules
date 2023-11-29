@@ -9,21 +9,24 @@ int main(void)
 	queue.enqueue(new std::string("anas"));
 	queue.enqueue(new std::string(" is"));
 	queue.enqueue(new std::string(" at"));
-	queue.enqueue(new std::string(" 42."));
+	queue.enqueue(new std::string(" 42\n"));
 
-	uintptr_t	address = Serializer::serialize(&queue);
+	uintptr_t	serializedPtr = Serializer::serialize(&queue);
 
 
-	Data	*queue1 = Serializer::deserialize(address);
+	Data	*deserializedPtr = Serializer::deserialize(serializedPtr);
 
-	while (!queue1->isEmpty())
+	if (deserializedPtr != &queue)
 	{
-		std::string	*word = (std::string *)queue1->dequeue();
+		std::cout << "Serialization and deserialization failed!" << std::endl;
+		return (1);
+	}
+
+	while (!deserializedPtr->isEmpty())
+	{
+		std::string	*word = (std::string *)deserializedPtr->dequeue();
 		std::cout << *word;
 		delete word;
 	}
-
-	std::cout << std::endl;
-
 
 }
