@@ -1,7 +1,6 @@
 #include "ScalarConverter.hpp"
 #include <cmath>
 #include <limits>
-#include <iomanip>
 
 void	ScalarConverter::convertToChar(int intValue)
 {
@@ -17,7 +16,7 @@ void	ScalarConverter::convertToInt(std::string input)
 {
 	int	intValue = std::stoi(input);
 	ScalarConverter::convertToChar(intValue);
-	std::cout << "int: " << intValue << std::endl;
+	std::cout << "int: " << static_cast<int>(intValue) << std::endl;
 }
 
 void	ScalarConverter::convertToFloat(std::string input)
@@ -34,9 +33,10 @@ void	ScalarConverter::convertToFloat(std::string input)
 		std::cout << "float: nanf" << std::endl;
 	else
 	{
-		std::cout << std::fixed << std::setprecision(1);
-		std::cout << "float: " << floatValue << "f" << std::endl;
-
+		std::cout << "float: " << floatValue;
+		if (floatValue == static_cast<int>(floatValue))
+			std::cout << ".0";
+		std::cout << "f" << std::endl;
 	}
 }
 
@@ -54,9 +54,10 @@ void	ScalarConverter::convertToDouble(std::string input)
 		std::cout << "double: nan" << std::endl;
 	else
 	{
-		std::cout << std::fixed << std::setprecision(1);
-		std::cout << "double: " << doubleValue << std::endl;
-	
+		std::cout << "double: " << static_cast<double>(doubleValue);
+		if (doubleValue == static_cast<int>(doubleValue))
+			std::cout << ".0";
+		std::cout << std::endl;
 	}
 
 }
@@ -75,7 +76,7 @@ void	ScalarConverter::convert(std::string input)
 	catch(std::out_of_range)
 	{
 		std::cout << "char: impossible" << std::endl;
-		std::cout << "int: impossible" << std::endl;
+		std::cout << "int: Non displayable" << std::endl;
 	}
 
 	try
@@ -88,7 +89,7 @@ void	ScalarConverter::convert(std::string input)
 	}
 	catch(std::out_of_range)
 	{
-		std::cout << "float: impossible" << std::endl;
+		std::cout << "float: Non displayable" << std::endl;
 	}
 
 	try
@@ -101,6 +102,6 @@ void	ScalarConverter::convert(std::string input)
 	}
 	catch(std::out_of_range)
 	{
-		std::cout << "double: impossible" << std::endl;
+		std::cout << "double: Non displayable" << std::endl;
 	}
 }

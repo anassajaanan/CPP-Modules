@@ -9,6 +9,14 @@
 
 class ScalarConverter
 {
+
+private:
+	ScalarConverter();
+	ScalarConverter(const ScalarConverter &copy);
+	ScalarConverter &operator=(const ScalarConverter &copy);
+	~ScalarConverter();
+
+
 public:
 	static void	convertToChar(int intValue);
 	static void	convertToInt(std::string input);
