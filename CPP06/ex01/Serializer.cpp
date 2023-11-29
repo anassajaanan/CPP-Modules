@@ -1,6 +1,5 @@
 #include "Serializer.hpp"
 #include "Queue.hpp"
-#include <sys/_types/_uintptr_t.h>
 
 
 uintptr_t	Serializer::serialize(Data *ptr)

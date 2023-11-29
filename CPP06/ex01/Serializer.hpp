@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <string>
+#include <stdint.h>
 #include "Queue.hpp"
 
 class Serializer
