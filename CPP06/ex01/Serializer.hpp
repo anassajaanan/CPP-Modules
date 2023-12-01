@@ -24,8 +24,4 @@ public:
 };
 
 
-
-
-
-
 #endif // SERIALIZER_HPP
