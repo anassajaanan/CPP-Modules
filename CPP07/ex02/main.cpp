@@ -3,6 +3,8 @@
 
 int main()
 {
+	Array<int> empty;
+
 	Array<int> a(5);
 	Array<int> b(5);
 
