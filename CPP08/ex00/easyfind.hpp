@@ -19,7 +19,7 @@ public:
 };
 
 template <typename  T>
-typename	T::iterator	easyfind(T &container, int val)
+typename	T::iterator	easyFind(T &container, int val)
 {
 	typename	T::iterator it;
 

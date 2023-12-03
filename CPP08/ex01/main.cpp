@@ -8,13 +8,10 @@ int main()
 {
     try
     {
-        // Create a Span instance with a capacity of 10,000
-        Span sp(10000);
+        Span sp(100000);
 
-        // Fill the Span with random numbers between 1 and 1000
-        sp.fillVector(1, 10000);
+        sp.fillVector(-100000, 100000);
 
-        // Print the first 10 elements for reference
         sp.printVector();
 
         // Find and print the shortest and longest spans

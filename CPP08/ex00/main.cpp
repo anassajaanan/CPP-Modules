@@ -17,9 +17,9 @@ void testEasyFindOnVector()
 	
 	try
 	{
-		it = easyfind(vec, 5);
+		it = easyFind(vec, 5);
 		std::cout << *it << " Found" << std::endl;
-		it = easyfind(vec, 20);
+		it = easyFind(vec, 20);
 		std::cout << "Found: " << *it << std::endl;
 	}
 	catch (std::exception &e)
@@ -41,9 +41,9 @@ void	testEasyFindOnDeque()
 	std::cout << "============ Test on Deque ============\n";
 	try
 	{
-		it = easyfind(deque, 5);
+		it = easyFind(deque, 5);
 		std::cout << *it << " Found" << std::endl;
-		it = easyfind(deque, 20);
+		it = easyFind(deque, 20);
 		std::cout << "Found: " << *it << std::endl;
 	}
 	catch (std::exception &e)
@@ -63,9 +63,9 @@ void	testEasyFindOnList()
 	std::cout << "============ Test on List ============\n";
 	try
 	{
-		it = easyfind(myList, 5);
+		it = easyFind(myList, 5);
 		std::cout << *it << " Found" << std::endl;
-		it = easyfind(myList, 20);
+		it = easyFind(myList, 20);
 		std::cout << "Found: " << *it << std::endl;
 	}
 	catch (std::exception &e)
