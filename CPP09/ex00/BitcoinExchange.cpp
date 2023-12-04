@@ -1,15 +1,5 @@
 #include "BitcoinExchange.hpp"
 #include <cctype>
-#include <climits>
-#include <cstdio>
-#include <cstdlib>
-#include <exception>
-#include <fstream>
-#include <iomanip>
-#include <ios>
-#include <iostream>
-#include <sstream>
-#include <string>
 
 BitcoinExchange::BitcoinExchange() { };
 
@@ -76,8 +66,10 @@ int	BitcoinExchange::validateInputDate(std::string &line, std::string &date)
 		std::cout << "Error: bad input" << " => {" << line << "}" << std::endl;
 		return (0);
 	}
-	for (int i = 0; (i < 10) && (i != 4) && (i != 7); i++)
+	for (int i = 0; i < 10; i++)
 	{
+		if (i == 4 || i == 7)
+			continue;
 		if (!std::isdigit(date[i]))
 		{
 			std::cout << "Error: bad input" << " => {" << line << "}" << std::endl;
@@ -103,7 +95,10 @@ int	BitcoinExchange::validateInputValue(std::string &line, std::string &value)
 	}
 	if (value[1] == '-')
 	{
-		std::cout << "Error: not a positive number." << std::endl;
+		if (std::isdigit(value[2]))
+			std::cout << "Error: not a positive number." << std::endl;
+		else
+			std::cout << "Error: bad input" << " => {" << line << "}" << std::endl;
 		return (0);
 	}
 	for (int i = 1; i < (int)value.size(); i++)
@@ -168,7 +163,7 @@ void	BitcoinExchange::processValidInput(std::string &date, std::string &valueStr
 	try
 	{
 		double valueDouble = std::stod(value);
-		if (valueDouble > INT_MAX)
+		if (valueDouble > 1000)
 		{
 			std::cout << "Error: too large number." << std::endl;
 			return;
@@ -250,7 +245,7 @@ void	BitcoinExchange::displayDataBase() const
 	}
 }
 
-void	BitcoinExchange::printExchange(std::string &date, double value, double exchangeRate)
+void	BitcoinExchange::printExchange(std::string date, double value, double exchangeRate)
 {
 	std::cout << date << " => ";
 	if (static_cast<int>(value) == value)
@@ -259,7 +254,7 @@ void	BitcoinExchange::printExchange(std::string &date, double value, double exch
 		std::cout << value;
 	std::cout << " = ";
 	if (static_cast<int>(value * exchangeRate) == value * exchangeRate)
-		std::cout << static_cast<int>(value * exchangeRate);
+		std::cout << static_cast<int>(value * exchangeRate) << std::endl;
 	else
 		std::cout << value * exchangeRate << std::endl;
 }

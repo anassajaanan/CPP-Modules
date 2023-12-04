@@ -17,7 +17,6 @@ int main(int argc, char **argv)
 	try
 	{
 		btc.loadDataBase();
-		// btc.displayDataBase();
 		btc.processInput(argv[1]);
 	}
 	catch(const std::exception &e)

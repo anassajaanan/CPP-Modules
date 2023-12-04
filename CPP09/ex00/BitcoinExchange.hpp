@@ -13,8 +13,12 @@
 #include <algorithm>
 #include <fstream>
 #include <cstring>
+#include <cctype>
+#include <climits>
+#include <cstdlib>
 #include <exception>
-
+#include <iomanip>
+#include <sstream>
 
 class BitcoinExchange
 {
@@ -28,13 +32,13 @@ public:
 	~BitcoinExchange();
 
 	// Validation
-	int	validateInputDate(std::string &line, std::string &date);
-	int	validateInputValue(std::string &line, std::string &value);
+	int		validateInputDate(std::string &line, std::string &date);
+	int		validateInputValue(std::string &line, std::string &value);
 	bool	isValidDate(std::string date);
 
 	//helpers
-	bool isLeapYear(int year);
-	void	printExchange(std::string &date, double value, double exchangeRate);
+	bool 	isLeapYear(int year);
+	void	printExchange(std::string date, double value, double exchangeRate);
 
 
 	void	loadDataBase();
