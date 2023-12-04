@@ -69,30 +69,14 @@ void	BitcoinExchange::loadDataBase()
 	ifs.close();
 }
 
-int	validateInputDate(std::string &line, std::string &date)
+int	BitcoinExchange::validateInputDate(std::string &line, std::string &date)
 {
 	if (date.size() != 11)
 	{
 		std::cout << "Error: bad input" << " => {" << line << "}" << std::endl;
 		return (0);
 	}
-	for (int i = 0; i < 4; i++)
-	{
-		if (!std::isdigit(date[i]))
-		{
-			std::cout << "Error: bad input" << " => {" << line << "}" << std::endl;
-			return (0);
-		}
-	}
-	for (int i = 5; i < 7; i++)
-	{
-		if (!std::isdigit(date[i]))
-		{
-			std::cout << "Error: bad input" << " => {" << line << "}" << std::endl;
-			return (0);
-		}
-	}
-	for (int i = 8; i < 10; i++)
+	for (int i = 0; (i < 10) && (i != 4) && (i != 7); i++)
 	{
 		if (!std::isdigit(date[i]))
 		{
@@ -108,7 +92,7 @@ int	validateInputDate(std::string &line, std::string &date)
 	return (1);
 }
 
-int	validateInputValue(std::string &line, std::string &value)
+int	BitcoinExchange::validateInputValue(std::string &line, std::string &value)
 {
 	if (value.empty())
 		return (0);
@@ -133,7 +117,8 @@ int	validateInputValue(std::string &line, std::string &value)
 	return (1);
 }
 
-bool isLeapYear(int year) {
+bool BitcoinExchange::isLeapYear(int year)
+{
     /*
 		Leap year is divisible by 4 but not divisible by 100,
 		except for years divisible by 400
@@ -141,7 +126,7 @@ bool isLeapYear(int year) {
     return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 }
 
-bool	isValidDate(std::string date)
+bool	BitcoinExchange::isValidDate(std::string date)
 {
 	std::string yearStr, monthStr, dayStr;
 
@@ -177,6 +162,41 @@ bool	isValidDate(std::string date)
 	return (false);
 }
 
+void	BitcoinExchange::processValidInput(std::string &date, std::string &valueStr)
+{
+	std::string	value = valueStr.substr(1, valueStr.size() - 1);
+	try
+	{
+		double valueDouble = std::stod(value);
+		if (valueDouble > INT_MAX)
+		{
+			std::cout << "Error: too large number." << std::endl;
+			return;
+		}
+		std::map<std::string, double>::iterator	it = map.lower_bound(date);
+		if (it == map.begin())
+		{
+			if (it->first == date)
+				printExchange(date, valueDouble, it->second);
+			else
+			{
+				std::cout << "Error: no data" << std::endl;
+				return;
+			}
+		}
+		else
+		{
+			if (it->first != date)
+				it--;
+			printExchange(date, valueDouble, it->second);
+		}
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+}
+
 void	BitcoinExchange::processInput(const char *filename)
 {
 	std::ifstream	ifs;
@@ -191,7 +211,6 @@ void	BitcoinExchange::processInput(const char *filename)
 	{
 		if (line.empty() || line == "date | value")
 		{
-			std::cout << std::endl;
 			continue;
 		}
 		std::istringstream	iss(line);
@@ -201,47 +220,18 @@ void	BitcoinExchange::processInput(const char *filename)
 			if (validateInputDate(line, dateStr) && validateInputValue(line, valueStr))
 			{
 				std::string	date = dateStr.substr(0, 10);
-				if (!isValidDate(date))
-				{
-					std::cout << "Error: bad input" << " => {" << line << "}" << std::endl;
-					continue;
-				}
 				if (date > "2022-03-29" || date < "2009-01-02")
 				{
 					std::cout << "Error: date out of range." << std::endl;
 					continue;
 				}
-				std::string	value = valueStr.substr(1, valueStr.size() - 1);
-				try
+				if (!isValidDate(date))
 				{
-					double valueDouble = std::stod(value);
-					if (valueDouble > INT_MAX)
-					{
-						std::cout << "Error: too large number." << std::endl;
-						continue;
-					}
-					std::map<std::string, double>::iterator	it = map.lower_bound(date);
-					if (it == map.begin())
-					{
-						if (it->first == date)
-							// std::cout << "Lower Bound Found of " << date << " is " << it->first << std::endl;
-							std::cout << date << " => " << valueDouble << " = " << it->second * valueDouble << std::endl;
-						else
-							std::cout << "Lower Bound Not Found " << std::endl;
-					}
-					else
-					{
-						if (it->first != date)
-							it--;
-						std::cout << date << " => " << valueDouble << " = " << it->second * valueDouble << std::endl;
-					}
+					std::cout << "Error: bad input" << " => {" << line << "}" << std::endl;
+					continue;
 				}
-				catch (std::exception &e)
-				{
-					std::cout << e.what() << std::endl;
-				}
+				processValidInput(date, valueStr);
 			}
-			
 		}
 		else {
 			std::cout << "Error: bad input" << " => {" << line << "}" << std::endl;
@@ -258,6 +248,20 @@ void	BitcoinExchange::displayDataBase() const
 		std::cout << it->first << " | " << it->second << std::endl;
 		it++;
 	}
+}
+
+void	BitcoinExchange::printExchange(std::string &date, double value, double exchangeRate)
+{
+	std::cout << date << " => ";
+	if (static_cast<int>(value) == value)
+		std::cout << static_cast<int>(value);
+	else
+		std::cout << value;
+	std::cout << " = ";
+	if (static_cast<int>(value * exchangeRate) == value * exchangeRate)
+		std::cout << static_cast<int>(value * exchangeRate);
+	else
+		std::cout << value * exchangeRate << std::endl;
 }
 
 

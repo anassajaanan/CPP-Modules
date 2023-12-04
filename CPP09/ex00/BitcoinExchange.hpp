@@ -27,9 +27,19 @@ public:
 	BitcoinExchange	&operator=(const BitcoinExchange &rhs);
 	~BitcoinExchange();
 
+	// Validation
+	int	validateInputDate(std::string &line, std::string &date);
+	int	validateInputValue(std::string &line, std::string &value);
+	bool	isValidDate(std::string date);
+
+	//helpers
+	bool isLeapYear(int year);
+	void	printExchange(std::string &date, double value, double exchangeRate);
+
 
 	void	loadDataBase();
 	void	processInput(const char *filename);
+	void	processValidInput(std::string &date, std::string &value);
 	void	displayDataBase() const;
 
 
