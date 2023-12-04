@@ -3,15 +3,22 @@
 
 
 
-int main()
+int main(int argc, char **argv)
 {
 	BitcoinExchange	btc;
 
+	if (argc != 2)
+	{
+		std::cout << "Usage: ./btc [filename]" << std::endl;
+		return (1);
+	
+	}
 
 	try
 	{
 		btc.loadDataBase();
-		btc.displayDataBase();
+		// btc.displayDataBase();
+		btc.processInput(argv[1]);
 	}
 	catch(const std::exception &e)
 	{

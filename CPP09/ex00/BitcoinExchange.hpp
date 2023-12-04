@@ -3,7 +3,6 @@
 
 
 #pragma once
-#include <exception>
 #ifndef BITCOINEXCHANGE_HPP
 # define BITCOINEXCHANGE_HPP
 
@@ -13,6 +12,8 @@
 #include <map>
 #include <algorithm>
 #include <fstream>
+#include <cstring>
+#include <exception>
 
 
 class BitcoinExchange
@@ -28,6 +29,7 @@ public:
 
 
 	void	loadDataBase();
+	void	processInput(const char *filename);
 	void	displayDataBase() const;
 
 
@@ -36,13 +38,16 @@ public:
 		public:
 			const char	*what() const throw();
 	};
-	class FailedToOpenException : public std::exception
+	class FailedToOpenDataException : public std::exception
 	{
 		public:
 			const char	*what() const throw();
 	};
-
-
+	class FailedToOpenInputException : public std::exception
+	{
+		public:
+			const char	*what() const throw();
+	};
 };
 
 
