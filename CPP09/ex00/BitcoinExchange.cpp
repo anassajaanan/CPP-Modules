@@ -39,7 +39,7 @@ void	BitcoinExchange::loadDataBase()
 	std::string line;
 	while(std::getline(ifs, line))
 	{
-		if (line.empty())
+		if (line.empty() || line == "date,exchange_rate")
 			continue;
 		std::istringstream	iss(line);
 		std::string	dateStr, valueStr;
