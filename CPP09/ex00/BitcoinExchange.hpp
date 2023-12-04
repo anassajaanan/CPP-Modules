@@ -12,10 +12,7 @@
 #include <map>
 #include <algorithm>
 #include <fstream>
-#include <cstring>
 #include <cctype>
-#include <climits>
-#include <cstdlib>
 #include <exception>
 #include <iomanip>
 #include <sstream>
