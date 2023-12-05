@@ -1,68 +1,32 @@
-#include <iostream>
+#include "PmergeMe.hpp"
+#include <list>
 #include <string>
-#include <vector>
+#include <iterator>
 
-void	swap(int *a, int *b)
+int	getNumbersBetweenIterators(std::list<int>::iterator begin, std::list<int>::iterator end)
 {
-	int	tmp;
-
-	tmp = *a;
-	*a = *b;
-	*b = tmp;
-}
-
-
-void	insertionSort(std::vector<int> &vec, int start, int end)
-{
-	for (int i = 0; i < end - start; i++)
+	int	count = 0;
+	while (begin != end)
 	{
-		int j = i + 1 + start;
-		int targetToBeInserted = vec[j];
-		while (j > start && vec[j - 1] > targetToBeInserted)
-		{
-			vec[j] = vec[j - 1];
-			j--;
-		}
-		vec[j] = targetToBeInserted;
+		begin++;
+		count++;
 	}
+	return (count);
+
 }
 
-// void	insertionSort(std::vector<int> &vec)
-// {
-// 	for (int i = 0; i < (int)vec.size() - 1; i++)
-// 	{
-// 		int	j = i + 1;
-// 		int targetToInsert = vec[j];
-// 		while (j > 0 && vec[j - 1] > targetToInsert)
-// 		{
-// 			vec[j] = vec[j - 1];
-// 			j--;
-// 		}
-// 		vec[j] = targetToInsert;
-// 	}
-// }
 
 
-int main()
+int main(int argc, char **argv)
 {
-	std::vector<int> vec {9,5,2,10,0,8,4,1,7,3};
+	PmergeMe	pmergeMe;
 
-	insertionSort(vec, 0, 4);
+	if (pmergeMe.processInput(argc, argv))
+		return (1);
+	
+	pmergeMe.performMergeSortVector(pmergeMe.getVector());
+	pmergeMe.performMergeSortList(pmergeMe.getList());
 
-	for (int i = 0; i < (int)vec.size(); i++)
-		std::cout << vec[i] << " ";
+	return (0);
 
-	std::cout << std::endl;
-
-	insertionSort(vec, 5, 9);
-
-	for (int i = 0; i < (int)vec.size(); i++)
-		std::cout << vec[i] << " ";
-
-	insertionSort(vec, 0, 9);	
-
-	std::cout << std::endl;
-
-	for (int i = 0; i < (int)vec.size(); i++)
-		std::cout << vec[i] << " ";
 }
